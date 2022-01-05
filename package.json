@@ -1,5 +1,6 @@
 {
   "name": "vsbuddies",
+  "publisher": "Lohitaksha",
   "displayName": "VSBuddies",
   "description": "Chat with your vsbuddies using vscode",
   "version": "0.0.1",
@@ -10,8 +11,6 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:vsbuddies.helloWorld",
-    "onCommand:vsbuddies.refreshExtensions",
     "onCommand:vsbuddies.authenticate",
     "onView:vsbuddies-sidebar"
   ],
@@ -39,16 +38,6 @@
     },
     "commands": [
       {
-        "command": "vsbuddies.helloWorld",
-        "category": "VSBuddies",
-        "title": "Hello World"
-      },
-      {
-        "command": "vsbuddies.refreshExtensions",
-        "category": "VSBuddies",
-        "title": "Update Extensions List"
-      },
-      {
         "command": "vsbuddies.authenticate",
         "category": "VSBuddies",
         "title": "Login Using Github"
@@ -74,6 +63,7 @@
     "@types/glob": "^7.1.4",
     "@types/mocha": "^9.0.0",
     "@types/node": "14.x",
+    "@types/polka": "^0.5.4",
     "@types/vscode": "^1.63.0",
     "@typescript-eslint/eslint-plugin": "^5.1.0",
     "@typescript-eslint/parser": "^5.1.0",
@@ -95,7 +85,7 @@
     "webpack-cli": "^4.8.0"
   },
   "dependencies": {
-    "@octokit/rest": "^18.12.0",
-    "firebase": "^9.6.1"
+    "firebase": "^9.6.1",
+    "polka": "^0.5.2"
   }
 }

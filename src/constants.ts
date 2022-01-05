@@ -1,1 +1,1 @@
-export const apiBaseUrl = "https://www.google.com";
+export const apiBaseUrl = "https://vsbuddiesextension.herokuapp.com";

@@ -1,18 +1,12 @@
 import * as vscode from 'vscode';
-import { authenticate } from './authenticate';
-import { MainPanel } from './MainPanel';
 import { SidebarProvider } from "./SidebarProvider";
+import { authenticate } from './authenticate';
+import { TokenManager } from './TokenManager';
+export async function activate(context: vscode.ExtensionContext) {
+	TokenManager.globalState = context.globalState;
 
-export function activate(context: vscode.ExtensionContext) {
-
-	context.subscriptions.push(vscode.commands.registerCommand('vsbuddies.helloWorld', () => {
-		MainPanel.createOrShow(context.extensionUri);
-		// console.log(vscode.extensions.all.map(ext=>ext.packageJSON.name));
-	})
-	);
-	
-	context.subscriptions.push(vscode.commands.registerCommand('vsbuddies.authenticate', () => {
-		authenticate();
+	context.subscriptions.push(vscode.commands.registerCommand('vsbuddies.authenticate', async() => {
+		authenticate(()=>{});
 	})
 	);
 	const sidebarProvider = new SidebarProvider(context.extensionUri);
@@ -23,14 +17,6 @@ export function activate(context: vscode.ExtensionContext) {
 	)
 	);
 
-	context.subscriptions.push(vscode.commands.registerCommand('vsbuddies.refreshExtensions', () => {
-		const userExtensions = vscode.extensions.all.map(ext=>ext.packageJSON.name);
-		sidebarProvider._view?.webview.postMessage({
-			type: "extensions",
-			value: userExtensions
-		});
-	})
-	);
 
 }
 
