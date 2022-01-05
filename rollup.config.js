@@ -25,7 +25,7 @@ export default fs
 			plugins: [
 				svelte({
 					// enable run-time checks when not in production
-					dev: !production,
+					dev: true,
 					preprocess: sveltePreprocess(),
 				}),
                 // we'll extract any component CSS out into

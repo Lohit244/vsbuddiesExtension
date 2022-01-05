@@ -3,7 +3,11 @@
   "publisher": "Lohitaksha",
   "displayName": "VSBuddies",
   "description": "Chat with your vsbuddies using vscode",
-  "version": "0.0.1",
+  "version": "1.2.1",
+  "repository": {
+    "type": "git",
+    "url": "github.com/lohit244/vsbuddiesExtension"
+  },
   "engines": {
     "vscode": "^1.63.0"
   },
@@ -45,8 +49,8 @@
     ]
   },
   "scripts": {
-    "vscode:prepublish": "npm run package",
-    "compile": "webpack",
+    "vscode:prepublish": "npm run compile",
+    "compile": "rollup -c && webpack --mode production",
     "watch": "concurrently \"rollup -c -w\" \"webpack --watch\"",
     "package": "webpack --mode production --devtool hidden-source-map",
     "compile-tests": "tsc -p . --outDir out",
@@ -85,7 +89,6 @@
     "webpack-cli": "^4.8.0"
   },
   "dependencies": {
-    "firebase": "^9.6.1",
     "polka": "^0.5.2"
   }
 }
