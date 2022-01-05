@@ -3,7 +3,7 @@
   "publisher": "Lohitaksha",
   "displayName": "VSBuddies",
   "description": "Chat with your vsbuddies using vscode",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "repository": {
     "type": "git",
     "url": "github.com/lohit244/vsbuddiesExtension"
