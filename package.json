@@ -49,7 +49,7 @@
     ]
   },
   "scripts": {
-    "vscode:prepublish": "npm run compile",
+    "vscode:prepublish": "tsc && npm run compile",
     "compile": "rollup -c && webpack --mode production",
     "lint": "eslint src --ext ts",
     "watch": "concurrently \"rollup -c -w\" \"webpack --mode development --watch\"",
