@@ -8,7 +8,7 @@ import css from 'rollup-plugin-css-only';
 import path from "path";
 import fs from "fs";
 
-const production = !process.env.ROLLUP_WATCH;
+const production = true;
 
 export default fs
 	.readdirSync(path.join(__dirname, "webviews", "pages"))
@@ -25,7 +25,7 @@ export default fs
 			plugins: [
 				svelte({
 					// enable run-time checks when not in production
-					dev: true,
+					dev: false,
 					preprocess: sveltePreprocess(),
 				}),
                 // we'll extract any component CSS out into
