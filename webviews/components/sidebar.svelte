@@ -178,6 +178,14 @@ onMount(async()=>{
     .rcvd{
         background-color: gray;
     }
+    .back-btn{
+        display: grid;
+        grid-template-columns: 1fr 4fr;
+    }
+    .friend-chat-name{
+        border: 1px gray solid;
+        background-color: var(--vscode-editor-background);
+    }
 </style>
 
 {#if loading}
@@ -208,11 +216,12 @@ onMount(async()=>{
         {/if}
         {#if selectedFriend!="0"}
         <div class="flex">
-            <header class="flex-start">
+            <header class="flex-start back-btn">
                 <button on:click={()=>{
                     selectedFriend = "0"
                 messageInput = ""
-            }}>{"<"}</button>
+            }}>{`<`}</button> 
+            <button class="friend-chat-name">{`${friendsAr.find(fr=>fr.uid===selectedFriend)?.name}`} </button>
         </header>
         <div class="message-container">
             {#if filteredMessages}
