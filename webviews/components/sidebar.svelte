@@ -186,6 +186,9 @@ onMount(async()=>{
         border: 1px gray solid;
         background-color: var(--vscode-editor-background);
     }
+    .input{
+        width:100%;
+    }
 </style>
 
 {#if loading}
@@ -235,7 +238,7 @@ onMount(async()=>{
             <div class="no-message">No messages yet... start the convo 🤗</div>
             {/if}
         </div>
-        <form class = "flex-end" on:submit|preventDefault={()=>{
+        <form class = "flex-end input" on:submit|preventDefault={()=>{
             sendMessage(messageInput)
         }}>
         <input type="text" bind:value={messageInput} />
