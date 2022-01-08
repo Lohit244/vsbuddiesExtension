@@ -51,9 +51,11 @@ class SidebarProvider {
                 case "extensions": {
                     const userExtensions = vscode.extensions.all.map(ext => ext.packageJSON.name);
                     webviewView.webview.postMessage({ type: 'extensions', value: { ext: userExtensions, token: TokenManager_1.TokenManager.getToken() } });
+                    break;
                 }
                 case "gotowebsite": {
-                    vscode.Uri.parse("https://www.vsbuddies.netlify.app");
+                    vscode.commands.executeCommand("vscode.open", vscode.Uri.parse(`https://vsbuddies.netlify.app`));
+                    break;
                 }
             }
         });

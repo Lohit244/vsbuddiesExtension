@@ -25,6 +25,7 @@ const getMessages = async()=>{
                     }
                 })
                 messages = await response.json();
+                console.log(messages)
                 filterMessages()
             }
         }
@@ -104,18 +105,18 @@ onMount(async()=>{
                     })
                 }
                 break;
-            
-        }
-    })
-    tsvscode.postMessage({type: 'get-token', value: undefined})
-    tsvscode.postMessage({type: 'extensions', value:undefined})
-    //get friends
-    // console.log(apiBaseUrl)
-
-    loading = false
-    setInterval(()=>{
-        if(user && !loading && selectedFriend!="0"){
-            getMessages()
+                
+            }
+        })
+        tsvscode.postMessage({type: 'get-token', value: undefined})
+        tsvscode.postMessage({type: 'extensions', value:undefined})
+        //get friends
+        // console.log(apiBaseUrl)
+        
+        loading = false
+        setInterval(()=>{
+            if(user && !loading && selectedFriend!="0"){
+                getMessages()
         }
     },2000)
 })
@@ -192,11 +193,27 @@ onMount(async()=>{
 </style>
 
 {#if loading}
-    <div class="loading">Loading..</div>
+<div class="loading">Loading..</div>
 {:else if user.uid}
+{#if (user.friends.length === 0)}
+<h1>
+    Go to the VS Buddies Website to
+    make new friends
+</h1>
+    <!-- svelte-ignore missing-declaration -->
+    <button on:click={()=>{
+        tsvscode.postMessage({type: 'gotowebsite',value: undefined})
+    }}>Go To the Website</button>
+<!-- svelte-ignore missing-declaration -->
+<button on:click={()=>{
+tsvscode.postMessage({type: 'logout', value: undefined})
+tsvscode.postMessage({type: 'get-token', value: undefined})
+}}
+>Logout</button>
+{/if}
     {#if friendsAr && friendsAr.length>0}
-        {#if selectedFriend=="0"}
-        {#each friendsAr as fr}
+    {#if selectedFriend=="0"}
+    {#each friendsAr as fr}
         <button class="contact-card" on:click={async()=>{
             selectedFriend = fr.uid
             await getMessages()
@@ -212,18 +229,18 @@ onMount(async()=>{
         {/each}
         <!-- svelte-ignore missing-declaration -->
         <button on:click={()=>{
-        tsvscode.postMessage({type: 'logout', value: undefined})
+            tsvscode.postMessage({type: 'logout', value: undefined})
         tsvscode.postMessage({type: 'get-token', value: undefined})
-        }}
+    }}
         >Logout</button>
-        {/if}
-        {#if selectedFriend!="0"}
+    {/if}
+    {#if selectedFriend!="0"}
         <div class="flex">
             <header class="flex-start back-btn">
                 <button on:click={()=>{
                     selectedFriend = "0"
-                messageInput = ""
-            }}>{`<`}</button> 
+                    messageInput = ""
+                }}>{`<`}</button> 
             <button class="friend-chat-name">{`${friendsAr.find(fr=>fr.uid===selectedFriend)?.name}`} </button>
         </header>
         <div class="message-container">
@@ -240,24 +257,14 @@ onMount(async()=>{
         </div>
         <form class = "flex-end input" on:submit|preventDefault={()=>{
             sendMessage(messageInput)
+            messageInput=""
         }}>
         <input type="text" bind:value={messageInput} />
-        </form>
-    </div>
+    </form>
+</div>
     {/if}
-    {#if !friendsAr || friendsAr.length === 0}
-        <h1>
-            Go to the VS Buddies Website to
-            make new friends
-            <!-- svelte-ignore missing-declaration -->
-            <button on:click={()=>{
-                tsvscode.postMessage({type: 'gotowebsite',value: undefined})
-            }}>Go To the Website</button>
-        </h1>
     {/if}
-    
-{/if}
-{:else}
+    {:else}
     <!-- svelte-ignore missing-declaration -->
     <button on:click={()=>{
         tsvscode.postMessage({type: 'auth', value: undefined})
