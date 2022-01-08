@@ -194,7 +194,7 @@ onMount(async()=>{
 {#if loading}
     <div class="loading">Loading..</div>
 {:else if user.uid}
-    {#if friendsAr}
+    {#if friendsAr && friendsAr.length>0}
         {#if selectedFriend=="0"}
         {#each friendsAr as fr}
         <button class="contact-card" on:click={async()=>{
@@ -245,7 +245,7 @@ onMount(async()=>{
         </form>
     </div>
     {/if}
-    {#if !friendsAr}
+    {#if !friendsAr || friendsAr.length === 0}
         <h1>
             Go to the VS Buddies Website to
             make new friends
