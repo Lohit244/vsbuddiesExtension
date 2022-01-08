@@ -43,7 +43,7 @@ See the instructions [here](https://github.com/Lohit244/vsbuddiesextapi)
 npm i
 ```
 3. Go to src/constants.ts and change the apibaseurl to the url of your node backend
-4. in src/SidebarProvider.ts line 60 change the url to the url of your website
+4. in src/SidebarProvider.ts line 61 change the url to the url of your website
 5. Make sure you have concurrently installed if not, install using
 
 ```bash
