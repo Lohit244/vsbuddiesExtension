@@ -249,6 +249,10 @@ onMount(async()=>{
         <h1>
             Go to the VS Buddies Website to
             make new friends
+            <!-- svelte-ignore missing-declaration -->
+            <button on:click={()=>{
+                tsvscode.postMessage({type: 'gotowebsite',value: undefined})
+            }}>Go To the Website</button>
         </h1>
     {/if}
     

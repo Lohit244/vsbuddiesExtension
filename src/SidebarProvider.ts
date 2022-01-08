@@ -56,6 +56,9 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
 					const userExtensions = vscode.extensions.all.map(ext=>ext.packageJSON.name);
 					webviewView.webview.postMessage({type: 'extensions', value: {ext: userExtensions, token: TokenManager.getToken()}});
 				}
+				case "gotowebsite":{
+					vscode.Uri.parse("https://www.vsbuddies.netlify.app");
+				}
 			}
 		});
 	}
