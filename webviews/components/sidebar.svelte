@@ -171,6 +171,7 @@ onMount(async()=>{
         max-width: 80%;
         border-radius: 15px;
         color: #fff;
+        overflow-wrap: break-word;
     }
     .sent{
         align-self: flex-end;
