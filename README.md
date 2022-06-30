@@ -1,5 +1,6 @@
 # VSBuddies
 This is an extension to chat with your friends from the vsBuddies website right inside VSCode.
+![Extension](https://user-images.githubusercontent.com/44966242/148548190-284fa183-4589-4952-b433-dba112a40f3f.png)
 [Link to website](https://vsbuddies.netlify.app)
 
 [Link to extension page](https://marketplace.visualstudio.com/items?itemName=Lohitaksha.vsbuddies)
