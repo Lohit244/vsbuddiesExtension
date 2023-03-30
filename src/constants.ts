@@ -1,1 +1,1 @@
-export const apiBaseUrl = "https://vsbuddiesextension.herokuapp.com";
+export const apiBaseUrl = "https://vsbuddiesextapi-production.up.railway.app";

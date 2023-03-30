@@ -41,13 +41,11 @@ See the instructions [here](https://github.com/Lohit244/vsbuddiesextapi)
 2. Run the command to install the dependencies
 
 ```bash
-npm i
+npm i -D
+# or if you are using yarn
+yarn install -D
 ```
 3. Go to src/constants.ts and change the apibaseurl to the url of your node backend
 4. in src/SidebarProvider.ts line 61 change the url to the url of your website
-5. Make sure you have concurrently installed if not, install using
-
-```bash
-npm i -g concurrently
-```
+5.  ~~Make sure you have concurrently installed if not, install using~~
 6. Now start the extension using vscode's run and debug menu (default keybind is F5)
